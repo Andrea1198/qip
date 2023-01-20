@@ -1,4 +1,5 @@
 import math as mt
+import numpy as np
 
 INV_SQRT2 = 1./mt.sqrt(2.)
 
@@ -32,6 +33,21 @@ class Qubit:
         else:
             self.c0 = 1.
             self.c1 = 0.
+    
+    def R_gate(self, control, k):
+        self.c1 = self.c1 * np.exp(2*mt.pi*1j/(2**k)*control.c1)
 
-
+class Register:
+    def __init__(self, coeffs):
+        self.state = []
+        for el in coeffs:
+            self.state.append(Qubit(el[0], el[1]))
+    
+    def print(self):
+        for i, el in enumerate(self.state):
+            print("state ", i, ": ", el.c0, "|0> + (", el.c1, " |1>)")
+    
+    def add_qbit(self, coeff):
+        self.state.append(Qubit(coeff[0], coeff[1]))
+    
     
