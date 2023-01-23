@@ -28,6 +28,10 @@ class Qubit:
         self.phi -= phase
         self.angles_to_coef()
 
+    def C_U_gate(self, j, phase):
+        self.phi += 2 ** j * phase
+        self.angles_to_coef()
+
     def print(self):
         print(self.c0, "|0> + ", self.c1, " |1>)")
 
