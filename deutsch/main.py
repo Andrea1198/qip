@@ -16,9 +16,7 @@ def operator_f(control):
 
 
 initial[0].H_gate()
-print(initial[0].c0, initial[0].c1)
 initial[0] = operator_f(initial[0])
-print(initial[0].c0, initial[0].c1)
 initial[0].H_gate()
 
 print(initial[0].c0, initial[0].c1)
